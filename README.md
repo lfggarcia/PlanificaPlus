@@ -1,79 +1,58 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# PlanificaPlus - Roadmap de Funcionalidades
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 1. Registro de Compras Manual
+- **Descripción:** Los usuarios pueden ingresar manualmente cada compra que realicen para llevar el control de sus gastos e ingresos.
+- **Objetivo:** Ofrecer flexibilidad para registrar cualquier transacción, permitiendo que los usuarios organicen sus finanzas a su gusto.
+- **Detalle:** El registro incluirá campos como monto, descripción, y categoría. Podrán editar y eliminar compras en cualquier momento.
 
-## Step 1: Start the Metro Server
+## 2. Overview de Gastos
+- **Descripción:** Un resumen visual del flujo financiero del usuario.
+- **Objetivo:** Proporcionar una visión clara del estado de los gastos, ingresos y balances.
+- **Detalle:** Incluirá gráficos de barras y circulares que mostrarán el desglose de los gastos por categorías, así como tendencias de gastos mensuales. También habrá alertas personalizables para avisar cuando el usuario se acerque a un límite de gasto.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 3. Perfil del Usuario (Opcional)
+- **Descripción:** Un perfil donde el usuario puede ingresar datos básicos, como su nombre, ingresos mensuales y preferencias.
+- **Objetivo:** Facilitar la personalización y adaptación de la app a las necesidades específicas del usuario.
+- **Detalle:** El ingreso de datos es opcional, pero los ingresos mensuales ayudarán a calcular balances y ofrecer recomendaciones personalizadas.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## 4. Lectura Automática de SMS para Compras
+- **Descripción:** La app leerá automáticamente los SMS relacionados con compras y preguntará si el usuario desea registrar la transacción.
+- **Objetivo:** Automatizar la entrada de datos y reducir la carga manual del usuario.
+- **Approach:**
+  - Cuando se detecte un SMS de compra, la app comprobará si ya existe en el registro. Si no, enviará una notificación push (con o sin retraso) preguntando al usuario si desea agregar la compra.
+  - **Consideración:** Los permisos de lectura de SMS deben solicitarse explícitamente en Android, mientras que en iOS no será posible implementar esta funcionalidad debido a restricciones del sistema operativo.
 
-```bash
-# using npm
-npm start
+## 5. Gastos Recurrentes
+- **Descripción:** Los usuarios pueden registrar pagos recurrentes, como suscripciones o facturas mensuales, y recibir notificaciones para confirmar su ejecución.
+- **Objetivo:** Facilitar el seguimiento de gastos fijos y automatizar la actualización de compras recurrentes.
+- **Approach:**
+  - Los usuarios registrarán un gasto recurrente indicando el monto, concepto, categoría (opcional) y la fecha de cobro.
+  - Recibirán una notificación push preguntando si el cobro se efectuó. Podrán elegir:
+    - **Aceptar:** Agrega automáticamente la compra.
+    - **Omitir:** Excluye la compra de ese mes.
+    - **Cancelar permanentemente:** Deja de seguir ese gasto recurrente.
+  - **Exclusión automática de SMS:** Al activar la lectura de SMS, estos gastos no se contarán, evitando duplicados.
 
-# OR using Yarn
-yarn start
-```
+## 6. Notificaciones Personalizadas
+- **Descripción:** Los usuarios recibirán notificaciones push que les recordarán registrar gastos si no lo han hecho en un tiempo determinado o confirmar transacciones automáticas y recurrentes.
+- **Objetivo:** Mantener al usuario informado y activo en la gestión de sus finanzas.
+- **Detalle:** Las notificaciones serán configurables en cuanto a frecuencia, tipo de gasto, o límite de gastos alcanzado.
 
-## Step 2: Start your Application
+## 7. Análisis Financiero Inteligente (Opcional)
+- **Descripción:** Un sistema de recomendaciones que analice los hábitos de gasto del usuario y sugiera formas de mejorar su ahorro o gestionar mejor su dinero.
+- **Objetivo:** Ofrecer valor añadido al usuario mediante análisis predictivo y personalizado.
+- **Detalle:** Basado en el historial de gastos, la app sugerirá ajustes o identificará patrones. También podrá enviar recomendaciones mensuales para optimizar el uso de los ingresos.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+---
 
-### For Android
+# Checklist de Funcionalidades
 
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- [ ] Implementar Registro de Compras Manual
+- [ ] Desarrollar Overview de Gastos
+- [ ] Crear Perfil del Usuario (Opcional)
+- [ ] Implementar Lectura Automática de SMS para Compras
+- [ ] Crear funcionalidad de Gastos Recurrentes
+- [ ] Desarrollar Notificaciones Personalizadas
+- [ ] Implementar Análisis Financiero Inteligente (Opcional)
